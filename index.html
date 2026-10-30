@@ -6,6 +6,8 @@
 <title>DotDiary — Private Period, Perimenopause &amp; Menopause Diary</title>
 <meta name="description" content="A private diary for periods, perimenopause and life after periods. Log hot flashes, night sweats, sleep and HRT in seconds. No account, no tracking — your data stays in Apple Health. One-time purchase.">
 <link rel="canonical" href="https://shiftingeden.github.io/DotDiary/">
+<link rel="alternate" hreflang="en" href="https://shiftingeden.github.io/DotDiary/">
+<link rel="alternate" hreflang="fr" href="https://shiftingeden.github.io/DotDiary/fr/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://shiftingeden.github.io/DotDiary/">
 <meta property="og:title" content="DotDiary — the private menopause &amp; period diary">
@@ -39,7 +41,11 @@
   .brand{display:flex;align-items:center;gap:10px;font-weight:700;text-decoration:none;color:var(--fg)}
   .dot{width:34px;height:34px;border-radius:10px;background:var(--accent);display:grid;place-items:center;flex:0 0 auto}
   .dot span{width:6px;height:6px;border-radius:50%;background:#fff;box-shadow:10px 0 #fff,-10px 0 #fff}
+  nav .right{display:flex;align-items:center;gap:18px}
   nav .links a{color:var(--muted);text-decoration:none;margin-left:18px;font-size:.95rem}
+  .lang{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;font-size:.82rem;font-weight:600}
+  .lang a,.lang span{padding:5px 11px;text-decoration:none;color:var(--muted)}
+  .lang .on{background:var(--fg);color:var(--bg)}
   @media (max-width:560px){ nav .links{display:none} }
 
   /* hero */
@@ -123,11 +129,14 @@
 <div class="wrap">
   <nav>
     <a class="brand" href="#"><span class="dot"><span></span></span>DotDiary</a>
-    <div class="links">
-      <a href="#stages">Menopause</a>
-      <a href="#features">Features</a>
-      <a href="#privacy">Privacy</a>
-      <a href="#support">Support</a>
+    <div class="right">
+      <div class="links">
+        <a href="#stages">Menopause</a>
+        <a href="#features">Features</a>
+        <a href="#privacy">Privacy</a>
+        <a href="#support">Support</a>
+      </div>
+      <div class="lang" aria-label="Language"><span class="on" aria-current="true">EN</span><a href="fr/" hreflang="fr" lang="fr">FR</a></div>
     </div>
   </nav>
 
@@ -236,7 +245,7 @@
       <div class="f"><h3>Trends, not noise</h3><p>Cycle-length history, symptom patterns by phase, and month-by-month symptom charts.</p></div>
       <div class="f"><h3>Switch from Flo or Clue</h3><p>Import a CSV export and DotDiary writes it into your own Apple Health.</p></div>
       <div class="f"><h3>Export anytime</h3><p>CSV with symptoms, tags and medications. It's your data, so you can take it with you.</p></div>
-      <div class="f"><h3>iPhone &amp; iPad</h3><p>Works on iPhone, iPad and the iPhone Duo, in English and French.</p></div>
+      <div class="f"><h3>iPhone &amp; iPad</h3><p>Works on iPhone, iPad and the iPhone Duo, in English and French. It follows your phone's language, or pick one in Settings.</p></div>
     </div>
   </section>
 
