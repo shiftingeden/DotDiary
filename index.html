@@ -29,7 +29,8 @@
   body{margin:0;background:var(--bg);color:var(--fg);
     font:17px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;}
   a{color:var(--link)}
-  img{max-width:100%;display:block}
+  /* height:auto keeps the width/height attributes from squashing scaled-down screenshots */
+  img{max-width:100%;height:auto;display:block}
   .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
   .narrow{max-width:720px}
 
@@ -184,9 +185,10 @@
   <section class="split">
     <div class="media"><div class="phone"><img src="img/stages.jpg" width="660" height="1434" loading="lazy" alt="DotDiary onboarding asking 'Where are your cycles right now?' with Regular cycles, Changing cycles and After periods options."></div></div>
     <div>
-      <h2>Log it in the moment, in two taps</h2>
-      <p class="sub">A hot flash arrives without warning, so logging one should take seconds.</p>
+      <h2>Pick your stage, then log in two taps</h2>
+      <p class="sub">Tell DotDiary where you are once. A hot flash arrives without warning, so logging one takes seconds.</p>
       <ul class="ticks">
+        <li><strong>Your choice, not an algorithm's</strong>: switch between Regular, Changing cycles and After periods anytime in Settings.</li>
         <li><strong>22 symptoms</strong>, ordered for your stage: hot flashes, night sweats, sleep and mood first during menopause.</li>
         <li><strong>Lock-screen and home-screen widgets</strong>, discreetly worded, so the app is two taps away.</li>
         <li><strong>Your own tags</strong> for anything else you want to track: caffeine, alcohol, stress, exercise.</li>
@@ -196,7 +198,7 @@
   </section>
 
   <section class="split rev" id="features">
-    <div class="media"><div class="phone"><img src="img/guide.jpg" width="660" height="1434" loading="lazy" alt="DotDiary Trends screen showing a 'Life after periods' guide: symptoms can carry on, vaginal and urinary changes, long-term health, bleeding after menopause."></div></div>
+    <div class="media"><div class="phone"><img src="img/meds.jpg" width="660" height="1434" loading="lazy" alt="DotDiary Medications screen: Estradiol, HRT, 50 mcg patch, taking now since May 31; Magnesium supplement, stopped."></div></div>
     <div>
       <span class="eyebrow">New in 1.2</span>
       <h2>A medication &amp; HRT diary your doctor can actually read</h2>
@@ -208,6 +210,20 @@
         <li><strong>A doctor-ready PDF</strong>: symptoms by month, cycle ranges, your full medication history and any bleeding dates. Made on your phone, with no server involved (Pro).</li>
       </ul>
       <p class="fine">Doses are written in your own words. DotDiary never suggests, checks or interprets them.</p>
+    </div>
+  </section>
+
+  <section class="split">
+    <div class="media"><div class="phone"><img src="img/guide.jpg" width="660" height="1434" loading="lazy" alt="DotDiary Trends screen showing a 'Life after periods' guide: symptoms can carry on, vaginal and urinary changes, long-term health, bleeding after menopause."></div></div>
+    <div>
+      <h2>Clear information, never a diagnosis</h2>
+      <p class="sub">Each stage comes with a short, plain-language guide to what's common and what's worth raising with your clinician.</p>
+      <ul class="ticks">
+        <li><strong>Understanding the transition</strong>: why cycles scatter in perimenopause, and the 12-month marker clinicians use.</li>
+        <li><strong>Life after periods</strong>: symptoms that carry on, vaginal and urinary changes, long-term health.</li>
+        <li><strong>Bleeding after menopause</strong> is flagged calmly as worth checking with a clinician, in the guide and right where you log it.</li>
+        <li><strong>No scores, no staging</strong>: DotDiary records and counts. Interpreting it is your clinician's job.</li>
+      </ul>
     </div>
   </section>
 
