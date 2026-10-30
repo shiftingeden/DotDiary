@@ -52,7 +52,7 @@
     </div>
   </header>
 
-  <p class="eff">Effective date: July 17, 2026</p>
+  <p class="eff">Effective date: October 30, 2026 · Previous version: July 17, 2026</p>
 
   <div class="card tldr">
     <p style="margin-top:0"><strong>The short version</strong></p>
@@ -60,6 +60,7 @@
       <li>DotDiary has <strong>no account, no sign-in, and no servers of ours</strong>.</li>
       <li>It makes <strong>no network requests</strong> and contains <strong>no analytics, advertising, or third-party tracking SDKs</strong>.</li>
       <li>Your periods, symptoms, and fertility-sign entries are stored <strong>only in Apple Health</strong> on your device.</li>
+      <li>Journal notes, custom tags, and your medication diary are stored <strong>only on your device</strong>, inside the app.</li>
       <li>We — the developer — <strong>never receive, see, or collect any of your data</strong>.</li>
     </ul>
   </div>
@@ -73,16 +74,26 @@
   <p>DotDiary is a front-end for Apple’s own Health app. The health information you log — menstrual flow,
      symptoms, and optional fertility signs (ovulation-test results, cervical-mucus quality, basal body
      temperature, and intimacy) — is written directly to <strong>Apple Health (HealthKit)</strong> on your
-     iPhone. DotDiary keeps no separate database or copy of this data. If you delete the app, your entries
+     iPhone or iPad. DotDiary keeps no separate database or copy of this data. If you delete the app, your entries
      remain safely in Apple Health.</p>
-  <p>The <strong>one</strong> thing stored inside the app itself is the free-text <strong>journal notes</strong>
-     you choose to write (Apple Health has no note field for this). Notes are saved in a private,
-     file-protected file on your device only.</p>
+  <p>A few things have no place in Apple Health, so the app stores them itself, in private,
+     file-protected files on your device only:</p>
+  <ul>
+    <li><strong>Journal notes</strong>: the free-text notes you choose to write.</li>
+    <li><strong>Custom tags</strong> (DotDiary Pro): tag names you create and the days you log them.</li>
+    <li><strong>Medication diary</strong>: the names of medications, HRT, or supplements you enter, their type,
+        the dates you started, changed, or stopped them, any dose you type, and the days you mark them as taken.
+        Doses are your own free text; the app never suggests, checks, or interprets them. Third-party apps
+        cannot write medications to Apple Health, so this diary stays in the app, is
+        <strong>not</strong> synced to iCloud, and is never transmitted.</li>
+  </ul>
 
   <h2>How your data is used</h2>
   <p>All processing happens <strong>on your device</strong>. The app reads your Apple Health cycle history to
-     draw your calendar, calculate statistics, and show cycle-length and symptom-pattern charts and estimated
-     next-period windows. None of this leaves your iPhone. We do not use your health data for advertising,
+     draw your calendar, calculate statistics, and show cycle-length and symptom-pattern charts, estimated
+     next-period windows (in the “Regular cycles” stage only), and medication-change markers. The cycle stage
+     (“Regular cycles”, “Changing cycles”, or “After periods”) is always one you choose; the app never infers it.
+     None of this leaves your device. We do not use your health data for advertising,
      marketing, profiling, research, or any purpose other than showing it back to you inside the app.</p>
 
   <h2>What we collect: nothing</h2>
@@ -106,7 +117,8 @@
      sheet, and it goes wherever you send it:</p>
   <ul>
     <li><strong>CSV export</strong> and the <strong>doctor-ready PDF report</strong> are generated on your
-        device and handed to the share sheet for you to save or send.</li>
+        device and handed to the share sheet for you to save or send. They can include your custom tags and
+        medication diary.</li>
     <li><strong>Partner summary</strong> shares only your current cycle day and estimated next-period window —
         never your symptoms or flow details — as plain text you send yourself.</li>
     <li><strong>CSV import</strong> reads a file you pick and writes the period days into Apple Health. The file
@@ -134,7 +146,8 @@
   <h2>Your control</h2>
   <p>You are always in control of your data. You can edit or delete any day in the app, delete a whole period,
      or use <em>Settings → Delete all DotDiary data</em> to remove everything DotDiary wrote to Apple Health
-     plus all journal notes. Entries created by other apps or by Apple Health itself can be managed directly in
+     plus all journal notes, custom tags, and your medication diary. You can also delete a single medication
+     and its history from <em>Settings → Medications &amp; supplements</em>. Entries created by other apps or by Apple Health itself can be managed directly in
      the Apple Health app. You can also revoke DotDiary’s Health permissions at any time in
      <em>iOS Settings → Health → Data Access &amp; Devices</em>.</p>
 

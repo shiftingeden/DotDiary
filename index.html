@@ -3,81 +3,289 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>DotDiary — Private Period Tracker &amp; Log</title>
-<meta name="description" content="DotDiary is a private, offline period and cycle diary. No account, no servers, no tracking — your data stays in Apple Health.">
+<title>DotDiary — Private Period, Perimenopause &amp; Menopause Diary</title>
+<meta name="description" content="A private diary for periods, perimenopause and life after periods. Log hot flashes, night sweats, sleep and HRT in seconds. No account, no tracking — your data stays in Apple Health. One-time purchase.">
+<link rel="canonical" href="https://shiftingeden.github.io/DotDiary/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://shiftingeden.github.io/DotDiary/">
+<meta property="og:title" content="DotDiary — the private menopause &amp; period diary">
+<meta property="og:description" content="Hot flashes, night sweats, sleep, HRT — logged in seconds, kept on your iPhone. No account. No tracking. No subscription.">
+<meta property="og:image" content="https://shiftingeden.github.io/DotDiary/img/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="apple-itunes-app" content="app-id=6792033058">
 <style>
   :root{
     --bg:#ffffff; --fg:#1c1c1e; --muted:#6b6b70; --line:#e7e7ea;
-    --accent:#d6558a; --card:#faf7f8; --link:#c0417a;
+    --accent:#d6558a; --accent-soft:#fbe9f0; --card:#faf7f8; --link:#c0417a;
+    --shadow:0 18px 40px -18px rgba(120,30,70,.35);
   }
   @media (prefers-color-scheme: dark){
     :root{ --bg:#000000; --fg:#f2f2f7; --muted:#9a9aa0; --line:#2a2a2e;
-           --accent:#e87ba4; --card:#141416; --link:#e87ba4; }
+           --accent:#e87ba4; --accent-soft:#2a1520; --card:#141416; --link:#e87ba4;
+           --shadow:0 18px 40px -18px rgba(0,0,0,.8); }
   }
   *{box-sizing:border-box}
-  body{margin:0; background:var(--bg); color:var(--fg);
-    font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;}
-  .wrap{max-width:720px;margin:0 auto;padding:56px 22px 90px}
-  .hero{display:flex;align-items:center;gap:16px}
-  .dot{width:60px;height:60px;border-radius:16px;background:var(--accent);
-       display:grid;place-items:center;flex:0 0 auto}
-  .dot span{width:11px;height:11px;border-radius:50%;background:#fff;box-shadow:19px 0 #fff,-19px 0 #fff}
-  h1{font-size:2.1rem;margin:0;letter-spacing:-.02em}
-  .tag{color:var(--muted);margin:4px 0 0}
-  h2{font-size:1.15rem;margin:36px 0 8px}
-  ul{padding-left:1.2rem}
-  li{margin:.35rem 0}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--fg);
+    font:17px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;}
   a{color:var(--link)}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin:26px 0}
-  .btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;
-       padding:11px 18px;border-radius:11px;font-weight:600;margin-top:6px}
-  .muted{color:var(--muted);font-size:.9rem}
-  hr{border:none;border-top:1px solid var(--line);margin:38px 0}
-  footer{color:var(--muted);font-size:.85rem}
+  img{max-width:100%;display:block}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+  .narrow{max-width:720px}
+
+  /* nav */
+  nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:700;text-decoration:none;color:var(--fg)}
+  .dot{width:34px;height:34px;border-radius:10px;background:var(--accent);display:grid;place-items:center;flex:0 0 auto}
+  .dot span{width:6px;height:6px;border-radius:50%;background:#fff;box-shadow:10px 0 #fff,-10px 0 #fff}
+  nav .links a{color:var(--muted);text-decoration:none;margin-left:18px;font-size:.95rem}
+  @media (max-width:560px){ nav .links{display:none} }
+
+  /* hero */
+  .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding:28px 0 56px}
+  .eyebrow{display:inline-block;background:var(--accent-soft);color:var(--link);font-weight:600;
+           font-size:.82rem;padding:5px 11px;border-radius:999px;margin-bottom:14px}
+  h1{font-size:clamp(2.1rem,5vw,3.3rem);line-height:1.08;letter-spacing:-.03em;margin:0 0 16px}
+  h1 em{font-style:normal;color:var(--accent)}
+  .lead{font-size:1.15rem;color:var(--muted);margin:0 0 24px;max-width:34ch}
+  .cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+  .btn{display:inline-flex;align-items:center;gap:8px;background:var(--fg);color:var(--bg);text-decoration:none;
+       padding:13px 20px;border-radius:13px;font-weight:600}
+  .btn svg{width:20px;height:20px}
+  .btn.ghost{background:transparent;color:var(--fg);border:1px solid var(--line)}
+  .fine{color:var(--muted);font-size:.88rem;margin-top:14px}
+  .phone{border-radius:38px;box-shadow:var(--shadow);border:1px solid var(--line);overflow:hidden;max-width:330px;margin:0 auto;background:var(--card)}
+  @media (max-width:820px){ .hero{grid-template-columns:1fr;padding-top:8px} .lead{max-width:none} }
+
+  /* trust strip */
+  .strip{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:22px 0;margin-bottom:72px}
+  .strip div{text-align:center;font-size:.92rem;color:var(--muted)}
+  .strip strong{display:block;color:var(--fg);font-size:1.02rem}
+  @media (max-width:700px){ .strip{grid-template-columns:repeat(2,1fr)} }
+
+  section{margin:0 0 84px}
+  h2{font-size:clamp(1.6rem,3.4vw,2.2rem);letter-spacing:-.02em;line-height:1.15;margin:0 0 12px}
+  .sub{color:var(--muted);font-size:1.08rem;margin:0 0 30px;max-width:60ch}
+
+  /* stages */
+  .stages{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .stage{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px}
+  .stage .n{font-size:.8rem;font-weight:700;color:var(--accent);letter-spacing:.06em;text-transform:uppercase}
+  .stage h3{margin:6px 0 8px;font-size:1.2rem}
+  .stage p{margin:0;color:var(--muted);font-size:.97rem}
+  .stage.hl{border-color:var(--accent);background:var(--accent-soft)}
+  @media (max-width:820px){ .stages{grid-template-columns:1fr} }
+
+  /* split feature */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+  .split.rev .media{order:2}
+  .split .media .phone{max-width:300px}
+  ul.ticks{list-style:none;padding:0;margin:0}
+  ul.ticks li{padding-left:30px;position:relative;margin:12px 0}
+  ul.ticks li::before{content:"";position:absolute;left:0;top:.45em;width:16px;height:16px;border-radius:50%;
+    background:var(--accent);box-shadow:inset 0 0 0 5px var(--accent-soft)}
+  @media (max-width:820px){ .split{grid-template-columns:1fr;gap:28px} .split.rev .media{order:0} }
+
+  /* grid of small features */
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .f{border:1px solid var(--line);border-radius:16px;padding:20px}
+  .f h3{font-size:1.02rem;margin:0 0 6px}
+  .f p{margin:0;color:var(--muted);font-size:.95rem}
+  @media (max-width:820px){ .grid{grid-template-columns:1fr 1fr} }
+  @media (max-width:520px){ .grid{grid-template-columns:1fr} }
+
+  /* compare */
+  table{width:100%;border-collapse:collapse;font-size:.96rem}
+  th,td{text-align:left;padding:12px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{color:var(--muted);font-weight:600;font-size:.85rem}
+  td.us{font-weight:600}
+  .tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:16px;padding:4px 10px}
+
+  /* big privacy band */
+  .band{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:40px 32px;text-align:center}
+  .band h2{margin-bottom:10px}
+  .band p{color:var(--muted);max-width:56ch;margin:0 auto}
+
+  details{border-bottom:1px solid var(--line);padding:14px 0}
+  summary{cursor:pointer;font-weight:600;list-style:none}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";float:right;color:var(--muted);font-weight:400}
+  details[open] summary::after{content:"–"}
+  details p{color:var(--muted);margin:8px 0 0}
+
+  .final{text-align:center}
+  footer{border-top:1px solid var(--line);color:var(--muted);font-size:.86rem;padding:28px 0 60px}
+  footer a{color:var(--muted)}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <div class="hero">
-    <div class="dot"><span></span></div>
-    <div>
-      <h1>DotDiary</h1>
-      <p class="tag">Private, offline period tracker &amp; log — no account, no tracking.</p>
+  <nav>
+    <a class="brand" href="#"><span class="dot"><span></span></span>DotDiary</a>
+    <div class="links">
+      <a href="#stages">Menopause</a>
+      <a href="#features">Features</a>
+      <a href="#privacy">Privacy</a>
+      <a href="#support">Support</a>
     </div>
+  </nav>
+
+  <header class="hero">
+    <div>
+      <span class="eyebrow">New: perimenopause &amp; menopause</span>
+      <h1>A private diary for every stage of your cycle, <em>including after it ends.</em></h1>
+      <p class="lead">Log hot flashes, night sweats, sleep, mood and HRT in a couple of taps. Your entries stay on your
+        iPhone, in Apple Health. No account, no tracking, no subscription.</p>
+      <div class="cta">
+        <a class="btn" href="https://apps.apple.com/app/id6792033058">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.37 12.6c-.02-2.3 1.88-3.4 1.96-3.46-1.07-1.56-2.73-1.77-3.32-1.8-1.41-.14-2.76.83-3.48.83-.72 0-1.82-.81-3-.79-1.54.02-2.97.9-3.76 2.28-1.6 2.78-.41 6.9 1.15 9.16.76 1.1 1.67 2.34 2.86 2.3 1.15-.05 1.58-.74 2.97-.74 1.38 0 1.77.74 2.98.72 1.23-.02 2.01-1.12 2.77-2.23.87-1.28 1.23-2.52 1.25-2.58-.03-.01-2.4-.92-2.42-3.66zM14.1 5.83c.63-.77 1.06-1.83.94-2.89-.91.04-2.01.61-2.66 1.37-.58.67-1.09 1.75-.96 2.79 1.02.08 2.05-.52 2.68-1.27z"/></svg>
+          Download on the App Store
+        </a>
+        <a class="btn ghost" href="#stages">See how it works</a>
+      </div>
+      <p class="fine">For iPhone and iPad. Free to use · DotDiary Pro is a one-time purchase.</p>
+    </div>
+    <div class="phone"><img src="img/today.jpg" width="660" height="1434" alt="DotDiary's Today screen in the After periods stage: hot flashes, night sweats, sleep changes and other symptoms as one-tap chips, with a medication row below."></div>
+  </header>
+
+  <div class="strip">
+    <div><strong>No account</strong>Nothing to sign up for</div>
+    <div><strong>No tracking</strong>No ads, analytics or SDKs</div>
+    <div><strong>Apple Health</strong>Your data stays yours</div>
+    <div><strong>Pay once</strong>Never a subscription</div>
   </div>
 
-  <div class="card">
-    <p style="margin:0 0 6px"><strong>Your cycle, kept to yourself.</strong></p>
-    <p style="margin:0">DotDiary is a fast, discreet diary for your period and symptoms. Everything you log is
-       saved straight into <strong>Apple Health</strong> on your iPhone — DotDiary keeps no copy, has no account,
-       and makes no network calls.</p>
-  </div>
+  <section id="stages">
+    <h2>Built for every stage, not just regular cycles</h2>
+    <p class="sub">Most trackers assume your cycle is steady and predictable, and stop being useful when it isn't.
+      DotDiary changes how it works when your body does. You choose the stage; the app never guesses it for you.</p>
+    <div class="stages">
+      <div class="stage">
+        <div class="n">Stage 1</div>
+        <h3>Regular cycles</h3>
+        <p>Two-tap period logging, a calendar, and next-period estimates with an honest confidence label.
+          They widen when your cycles vary instead of disappearing.</p>
+      </div>
+      <div class="stage hl">
+        <div class="n">Stage 2 · Perimenopause</div>
+        <h3>Changing cycles</h3>
+        <p>When periods turn irregular, DotDiary stops predicting and starts describing: days since your last
+          period, your recent cycle range, and month-by-month symptom counts. Hot flashes and night sweats come first.</p>
+      </div>
+      <div class="stage hl">
+        <div class="n">Stage 3 · Menopause &amp; beyond</div>
+        <h3>After periods</h3>
+        <p>Today becomes a symptom diary: no cycle counter, no predictions. Bleeding can still be logged, and
+          DotDiary reminds you that it's worth mentioning to a clinician.</p>
+      </div>
+    </div>
+  </section>
 
-  <h2>What it does</h2>
-  <ul>
-    <li>2-tap period logging and 22 symptoms, with a calendar you can backfill any day.</li>
-    <li>Predictions with confidence labels that never vanish, even on irregular cycles.</li>
-    <li>Cycle-length and symptom-pattern charts, and a doctor-ready PDF report.</li>
-    <li>Lock-screen &amp; home-screen widgets, discreetly worded.</li>
-    <li>Face ID lock, neutral app icons, and an optional decoy screen.</li>
-    <li>Import from Flo, Clue, or CSV — your data written into your own Apple Health.</li>
-    <li>One-time DotDiary Pro. No subscription, ever.</li>
-  </ul>
+  <section class="split">
+    <div class="media"><div class="phone"><img src="img/stages.jpg" width="660" height="1434" loading="lazy" alt="DotDiary onboarding asking 'Where are your cycles right now?' with Regular cycles, Changing cycles and After periods options."></div></div>
+    <div>
+      <h2>Log it in the moment, in two taps</h2>
+      <p class="sub">A hot flash arrives without warning, so logging one should take seconds.</p>
+      <ul class="ticks">
+        <li><strong>22 symptoms</strong>, ordered for your stage: hot flashes, night sweats, sleep and mood first during menopause.</li>
+        <li><strong>Lock-screen and home-screen widgets</strong>, discreetly worded, so the app is two taps away.</li>
+        <li><strong>Your own tags</strong> for anything else you want to track: caffeine, alcohol, stress, exercise.</li>
+        <li><strong>Private notes</strong> for each day, stored only on your device.</li>
+      </ul>
+    </div>
+  </section>
 
-  <h2>Support</h2>
-  <p>Questions, ideas, or a bug to report? We’d love to hear from you.</p>
-  <p><a class="btn" href="mailto:TechBitsMix@gmail.com">Email support</a></p>
-  <p class="muted">We usually reply within a couple of days. Please include your app version (Settings shows it)
-     so we can help faster — nothing from your diary is ever needed.</p>
+  <section class="split rev" id="features">
+    <div class="media"><div class="phone"><img src="img/guide.jpg" width="660" height="1434" loading="lazy" alt="DotDiary Trends screen showing a 'Life after periods' guide: symptoms can carry on, vaginal and urinary changes, long-term health, bleeding after menopause."></div></div>
+    <div>
+      <span class="eyebrow">New in 1.2</span>
+      <h2>A medication &amp; HRT diary your doctor can actually read</h2>
+      <p class="sub">Starting HRT or changing a dose? Record it once, then see your symptom counts before and after.</p>
+      <ul class="ticks">
+        <li><strong>Log HRT, prescriptions and supplements</strong>: when you started, changed the dose, or stopped. Free.</li>
+        <li><strong>Mark them taken</strong> each day with a tap, if you like.</li>
+        <li><strong>See changes on your symptom chart</strong>: each dose change is marked as a dashed line on your month-by-month symptoms (Pro).</li>
+        <li><strong>A doctor-ready PDF</strong>: symptoms by month, cycle ranges, your full medication history and any bleeding dates. Made on your phone, with no server involved (Pro).</li>
+      </ul>
+      <p class="fine">Doses are written in your own words. DotDiary never suggests, checks or interprets them.</p>
+    </div>
+  </section>
 
-  <h2>Privacy</h2>
-  <p>DotDiary collects no data. Read the full <a href="privacy.html">Privacy Policy</a>.</p>
+  <section>
+    <h2>Everything else you'd expect, done quietly</h2>
+    <p class="sub">Fast, discreet tools with nothing to sign up for.</p>
+    <div class="grid">
+      <div class="f"><h3>Apple Health native</h3><p>Your existing Health history shows up on day one, and everything you log goes back into Apple Health.</p></div>
+      <div class="f"><h3>Discreet by design</h3><p>Face ID lock, neutral app icons, an optional decoy screen, and widgets that never say "period".</p></div>
+      <div class="f"><h3>Trends, not noise</h3><p>Cycle-length history, symptom patterns by phase, and month-by-month symptom charts.</p></div>
+      <div class="f"><h3>Switch from Flo or Clue</h3><p>Import a CSV export and DotDiary writes it into your own Apple Health.</p></div>
+      <div class="f"><h3>Export anytime</h3><p>CSV with symptoms, tags and medications. It's your data, so you can take it with you.</p></div>
+      <div class="f"><h3>iPhone &amp; iPad</h3><p>Works on iPhone, iPad and the iPhone Duo, in English and French.</p></div>
+    </div>
+  </section>
 
-  <hr>
+  <section>
+    <h2>How DotDiary compares</h2>
+    <p class="sub">Menopause apps typically cost $40–80 a year and require an account. DotDiary is different by design.</p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th></th><th>DotDiary</th><th>Typical menopause app</th></tr></thead>
+        <tbody>
+          <tr><td>Price</td><td class="us">Free · Pro is one-time</td><td>$40–80 per year subscription</td></tr>
+          <tr><td>Account</td><td class="us">None</td><td>Required</td></tr>
+          <tr><td>Where your data lives</td><td class="us">Apple Health on your device</td><td>The company's servers</td></tr>
+          <tr><td>Ads &amp; analytics</td><td class="us">None, ever</td><td>Often third-party SDKs</td></tr>
+          <tr><td>Doctor report</td><td class="us">Made on-device, works offline</td><td>Server-generated, if offered</td></tr>
+          <tr><td>Menopause stage</td><td class="us">You choose it</td><td>Often "assessed" by an algorithm</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="privacy">
+    <div class="band">
+      <h2>There's nothing to breach, sell, or subpoena.</h2>
+      <p>DotDiary has no servers and makes no network calls. Cycle and symptom entries go into Apple Health; notes, tags
+        and your medication diary stay in the app on your device. Our App Store privacy label says
+        <strong>"Data Not Collected"</strong>, because nothing is.</p>
+      <p style="margin-top:14px"><a href="privacy.html">Read the privacy policy</a></p>
+    </div>
+  </section>
+
+  <section class="narrow" style="margin-left:auto;margin-right:auto">
+    <h2>Questions</h2>
+    <details><summary>Is DotDiary only for menopause?</summary>
+      <p>No. It's a full period tracker for regular cycles too. The Changing cycles and After periods stages are there
+        when you need them, and you can switch anytime in Settings.</p></details>
+    <details><summary>Does DotDiary tell me if I'm in perimenopause?</summary>
+      <p>No, on purpose. Only a clinician can tell you that. DotDiary records and counts what you log, and
+        presents it clearly, so the conversation with your clinician is easier.</p></details>
+    <details><summary>What's free and what's Pro?</summary>
+      <p>Logging, the calendar, all three stages, widgets and the medication diary are free. DotDiary Pro, a
+        one-time purchase, adds the month-by-month symptom chart with medication markers, symptom patterns,
+        the doctor PDF, custom tags, partner sharing and iCloud backup of notes.</p></details>
+    <details><summary>Where is my data stored?</summary>
+      <p>Periods, symptoms and fertility signs: in Apple Health on your device. Notes, tags and medications: in
+        protected files inside DotDiary on your device. Nothing is sent to us. We have no servers.</p></details>
+    <details><summary>Is it a medical device?</summary>
+      <p>No. DotDiary is a diary. Estimates are for information only and must not be used for contraception or
+        conception planning, and nothing in the app is medical advice.</p></details>
+  </section>
+
+  <section class="final" id="support">
+    <h2>Try DotDiary for free</h2>
+    <p class="sub" style="margin-left:auto;margin-right:auto">Questions, ideas, or a bug to report? Email us. Please
+      include your app version (shown in Settings); we never need anything from your diary.</p>
+    <div class="cta" style="justify-content:center">
+      <a class="btn" href="https://apps.apple.com/app/id6792033058">Download on the App Store</a>
+      <a class="btn ghost" href="mailto:TechBitsMix@gmail.com">Email support</a>
+    </div>
+  </section>
+
   <footer>
-    <p>DotDiary is not a medical device. Cycle predictions are estimates only and must not be used for
-       contraception or conception planning.</p>
-    <p>© 2026 TechBitsMix. All rights reserved.</p>
+    <p>DotDiary is not a medical device. Cycle estimates are for information only and must not be used for
+       contraception or conception planning. Health information in the app is general and not medical advice.</p>
+    <p><a href="privacy.html">Privacy Policy</a> · <a href="mailto:TechBitsMix@gmail.com">Support</a> · © 2026 TechBitsMix</p>
   </footer>
 </div>
 </body>
